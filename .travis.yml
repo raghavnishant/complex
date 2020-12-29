@@ -6,7 +6,7 @@ services:
     - docker build -t complex -f ./client/Dockerfile.dev ./client
   
   script:
-    - docker run complex -- --coverage
+    - docker run -e CI=true complex npm run test
   
   after_success:
     - docker build -t multi-client ./client
